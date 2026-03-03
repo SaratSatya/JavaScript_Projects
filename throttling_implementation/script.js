@@ -1,5 +1,5 @@
 async function fetchDetails(){
-    console.log('fetching details....');
+    console.log('fetching details');
     //fetch();
 }
 
@@ -9,10 +9,9 @@ function throttle(fetchDetails,delay){
         const now=Date.now();
         if(now-last>=delay){
             last=now;
-            return fetchDetails.apply(this,args);
+            fetchDetails.apply(this,args);
         }
     }
 }
-
-const throttlefetchDetails=throttle(fetchDetails,5000);
-document.querySelector("#button1").addEventListener('click',(e)=>throttlefetchDetails())
+const throttleFetchDetails=throttle(fetchDetails,3000);
+document.querySelector('#button1').addEventListener('click',throttleFetchDetails);
